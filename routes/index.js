@@ -23,4 +23,8 @@ router.get('/home', (req, res, next) => {
   console.log("Got Home!");
 });
 
+router.get('/admin', (req, res, next) => {
+  console.log("GET at /admin");
+});
+
 module.exports = router;

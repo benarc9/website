@@ -37,7 +37,7 @@ app.use(function(req, res, next) {
 
 //#region Database Setup
 var db = new Database();
-db.connect();
+db.connect('website', 'su', '1234', 'localhost', 'mysql', '3306');
 db.test();
 //#endregion
 

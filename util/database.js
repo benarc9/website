@@ -4,12 +4,24 @@ class Database {
 	constructor () {
 	}
 
-	connect () {
-		Database.connection = new Sequelize('website', 'root', '1234', {
+	tryRoot() {
+		Database.connection  = new Sequelize('website', 'root', '1', {
 			host: 'localhost',
-			dialect: 'mysql',
-			port: 3306
+			dialect: 'mysql'
 		});
+	}
+
+	connect (dbName, username, password, hostPath, api, hostPort) {
+		Database.connection = new Sequelize(
+			dbName,
+			username,
+			password,
+			{
+				host: hostPath,
+				dialect: api,
+				port: hostPort
+			}
+		)
 	}
 
 	test () {

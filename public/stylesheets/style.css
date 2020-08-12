@@ -1,8 +1,17 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+.bg-tomato{background-color: tomato;}
+.bg-orange{background-color: orange;}
+.bg-dodgerblue{background-color: dodgerblue;}
+.bg-seagreen{background-color: seagreen;}
+.bg-gray{background-color: gray;};
+.bg-slateblue{background-color: slateblue;}
+.bg-violet{background-color: violet;}
+.bg-lightgray{background-color: lightgray;}
 
-a {
-  color: #00B7FF;
-}
+.txt-tomato{color: tomato;}
+.txt-orange{color: orange;}
+.txt-dodgerblue{color: dodgerblue;}
+.txt-seagreen{color: seagreen;}
+.txt-gray{color: gray;};
+.txt-slateblue{color: slateblue;}
+.txt-violet{color: violet;}
+.txt-lightgray{color: lightgray;}
