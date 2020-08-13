@@ -4,13 +4,6 @@ class Database {
 	constructor () {
 	}
 
-	tryRoot() {
-		Database.connection  = new Sequelize('website', 'root', '1', {
-			host: 'localhost',
-			dialect: 'mysql'
-		});
-	}
-
 	connect (dbName, username, password, hostPath, api, hostPort) {
 		Database.connection = new Sequelize(
 			dbName,
@@ -33,8 +26,12 @@ class Database {
 				console.error('Failed to connect!');
 			});
 	}
+
+	getConnection() {
+		return Database.connection;
+	}
 }
 
-Database.connection;
+Database.connection = null;
 
 module.exports = Database;

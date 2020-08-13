@@ -23,8 +23,13 @@ router.get('/home', (req, res, next) => {
   console.log("Got Home!");
 });
 
-router.get('/admin', (req, res, next) => {
-  console.log("GET at /admin");
+router.post('/admin', (req, res, next) => {
+  try{
+    res.render('admin', {title: 'Admin', layout: 'adminLayout.hbs'});
+  }
+  catch (err) {
+    console.log("Problem fetching Admin: ", err);
+  }
 });
 
 module.exports = router;

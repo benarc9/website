@@ -6,6 +6,7 @@ var logger = require('morgan');
 var exphbs = require('express-handlebars');
 
 var indexRouter = require('./routes/index');
+var adminRouter = require('./routes/admin.js');
 
 var Database = require('./util/database');
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'images')));
 
 app.use('/', indexRouter);
+app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -49,7 +51,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {error: err.message, title: 'Error!'})
 });
 
 module.exports = app;
