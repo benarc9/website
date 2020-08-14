@@ -1,37 +1,28 @@
 const Sequelize = require('sequelize');
 
-class Database {
-	constructor () {
-	}
+class Database {};
 
-	connect (dbName, username, password, hostPath, api, hostPort) {
-		Database.connection = new Sequelize(
-			dbName,
-			username,
-			password,
-			{
-				host: hostPath,
-				dialect: api,
-				port: hostPort
-			}
-		)
-	}
+connect = function () {
+	let connection = new Sequelize(
+		'website',
+		'admin',
+		'caution2',
+		{
+			host: 'localhost',
+			dialect: 'mysql',
+			port: '3306'
+		}
+	)
 
-	test () {
-		Database.connection.authenticate()
-			.then(() => {
-				console.log('Connection established!');
-			})
-			.catch(err => {
-				console.error('Failed to connect!');
-			});
-	}
-
-	getConnection() {
-		return Database.connection;
-	}
+	return connection;
 }
 
-Database.connection = null;
+test = function (connection) {
+	connection.authenticate().then(() => {
+		console.log('Connection established!');
+	}).catch(err => {
+		console.error('Failed to connect!');
+	});
+}
 
-module.exports = Database;
+module.exports = {Database};

@@ -8,7 +8,8 @@ var exphbs = require('express-handlebars');
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin.js');
 
-var Database = require('./util/database');
+var configLoader = require('./util/configFileLoader.js');
+var serverConfig = configLoader.loadConfig('../config.json');
 
 var app = express();
 var hbs = exphbs.create({
@@ -35,13 +36,7 @@ app.use('/admin', adminRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
-});
-
-//#region Database Setup
-var db = new Database();
-db.connect('website', 'su', '1234', 'localhost', 'mysql', '3306');
-db.test();
-//#endregion
+})
 
 // error handler
 app.use(function(err, req, res, next) {

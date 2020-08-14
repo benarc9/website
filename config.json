@@ -1,0 +1,11 @@
+{
+	"config" :
+	{
+		"database": "website",
+		"username": "admin",
+		"password": "caution2",
+		"host": "localhost",
+		"dialect": "mysql",
+		"port": "3306"
+	}
+}

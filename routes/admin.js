@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var Database = require('../util/database');
+var Post = require('../models/post');
 
 router.get('/', (req, res, next) => {
     console.log("GET route /admin");
@@ -7,20 +9,11 @@ router.get('/', (req, res, next) => {
 
 router.post('/submit', (req, res, next) => {
     console.log("POST route /admin/submit");
-    var title = res.body.postTitle;
-    var body = res.body.postBody;
+    var postTitle = res.body.postTitle;
+    var postBody = res.body.postBody;
 
-    var Database = require('../util/database');
-
-    try{
-        const newPost = await Database.connection.models.Post.create({
-            postTitle: title,
-            postBody: body
-        });
-    }
-    catch (err) {
-        console.log(err);
-    }
+    var newPost = Post.build({title: postTitle, body: postBody});
+    Post.save();
 });
 
 module.exports = router;
